@@ -1,23 +1,49 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import './index.css';
+
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
+import { LoginRoute } from './routes/LoginRoute';
+import { Root } from './routes/Root';
+import { createRoot } from 'react-dom/client';
+import { ErrorRoute } from './routes/ErrorRoute';
+import { NewPollRoute } from './routes/NewPollRoute';
+import { LeaderBoardRoute } from './routes/LeaderBoardRoute';
+import { pollResultLoader, PollResultRoute } from './routes/PollResultRoute';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Root/>,
+        errorElement: <ErrorRoute/>
+    },
+    {
+        path: 'add',
+        element: <NewPollRoute/>
+    },
+    {
+        path: 'leader-board',
+        element: <LeaderBoardRoute/>
+    },
+    {
+        path: 'login',
+        element: <LoginRoute/>
+    },
+    {
+        path: 'questions/:question_id',
+        element: <PollResultRoute />,
+        loader: pollResultLoader
+    }
+]);
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <RouterProvider router={router}></RouterProvider>
+        </Provider>
+    </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
