@@ -27,6 +27,9 @@ export const AnsweredQuestionsContainer = () => {
                         return false;
                     }
                 })
+                .sort(([keyA, valueA], [keyB, valueB]) => {
+                    return valueB.timestamp - valueA.timestamp
+                })
                 .map(([key, value]) => {
                         const user = users[value.author];
                         return (

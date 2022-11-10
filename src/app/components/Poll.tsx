@@ -101,6 +101,8 @@ export const Poll: React.FC<PoolProps> = ({ user, question, answered }: PoolProp
                                 <button className={'bg-gray-600 text-gray-50 w-full rounded h-8 mt-4'} type={'submit'}>Submit</button>
                             </form>
                     }
+
+                    <div className={'flex justify-end italic'}>Created at: {new Date(question.timestamp).toLocaleString()}</div>
                 </div>
             </div>
         </div>
