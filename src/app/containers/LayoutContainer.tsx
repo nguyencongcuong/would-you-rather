@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from './NavigationContainer';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
-import { selectAuthentication } from '../../features/authentication/authenticationSlice';
+import { useAppDispatch } from '../hooks';
+import { login } from '../../features/authentication/authenticationSlice';
 import { ROUTE } from '../constants/route';
 import { Col, Row } from 'antd';
+import { LOCAL_STORAGE_KEY } from '../constants/keys';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -13,13 +14,11 @@ interface LayoutProps {
 export const LayoutContainer: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
 
     const navigate = useNavigate();
-    const authentication = useAppSelector(selectAuthentication);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (!authentication.id) {
-            navigate(ROUTE.LOGIN);
-            return;
-        }
+        const id = localStorage.getItem(LOCAL_STORAGE_KEY.ID);
+        id ? dispatch(login({id})) : navigate(ROUTE.LOGIN)
     }, []);
 
     return (

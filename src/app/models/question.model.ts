@@ -13,9 +13,3 @@ export interface QuestionI {
 }
 
 export type QuestionsI = Record<string, QuestionI>
-
-export interface FormatQuestionI {
-    optionOneText: string,
-    optionTwoText: string,
-    author: string
-}

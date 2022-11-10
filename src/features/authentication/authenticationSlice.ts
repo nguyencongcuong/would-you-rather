@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import { LOCAL_STORAGE_KEY } from '../../app/constants/keys';
 
 export interface AuthenticationState {
-    id: string | undefined;
+    id: string;
 }
 
 const initialState: AuthenticationState = {
-    id: ''
+    id: '',
 };
 
 export const authenticationSlice = createSlice({
@@ -15,12 +16,15 @@ export const authenticationSlice = createSlice({
     reducers: {
         login: (state, action: PayloadAction<{ id: string }>) => {
             const { id } = action.payload;
-            console.log('id state', id);
             state.id = id;
+
+            localStorage.setItem(LOCAL_STORAGE_KEY.ID, id)
         },
 
         logout: (state) => {
             state.id = '';
+
+            localStorage.clear();
         },
 
     },

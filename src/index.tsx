@@ -10,30 +10,34 @@ import { createRoot } from 'react-dom/client';
 import { ErrorRoute } from './routes/ErrorRoute';
 import { NewPollRoute } from './routes/NewPollRoute';
 import { LeaderBoardRoute } from './routes/LeaderBoardRoute';
-import { pollResultLoader, PollResultRoute } from './routes/PollResultRoute';
+import { PollResultRoute } from './routes/PollResultRoute';
+import { ROUTE } from './app/constants/route';
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: ROUTE.HOME,
         element: <Root/>,
-        errorElement: <ErrorRoute/>
+        errorElement: <ErrorRoute />
     },
     {
-        path: 'add',
+        path: ROUTE.NEW_POLL,
         element: <NewPollRoute/>
     },
     {
-        path: '/leaderboard',
+        path: ROUTE.LEADER_BOARD,
         element: <LeaderBoardRoute/>
     },
     {
-        path: 'login',
+        path: ROUTE.LOGIN,
         element: <LoginRoute/>
     },
     {
-        path: 'questions/:question_id',
+        path: ROUTE.POLL_RESULT,
         element: <PollResultRoute />,
-        loader: pollResultLoader
+    },
+    {
+        path: ROUTE.PAGE_NOT_FOUND,
+        element: <ErrorRoute />
     }
 ]);
 
