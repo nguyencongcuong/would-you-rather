@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <NewPollRoute/>
     },
     {
-        path: 'leader-board',
+        path: '/leaderboard',
         element: <LeaderBoardRoute/>
     },
     {
