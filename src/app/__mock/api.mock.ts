@@ -1,6 +1,6 @@
 import { questions } from './questions.mock';
 import { users } from './users.mock';
-import { QuestionsI } from '../models/question.model';
+import { QuestionsI } from '../models/QuestionModel';
 
 class MockAPI {
 

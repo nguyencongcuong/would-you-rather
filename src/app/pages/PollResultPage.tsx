@@ -1,14 +1,14 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { Progress } from 'antd';
-import { LayoutContainer } from '../app/containers/LayoutContainer';
-import { useAppSelector } from '../app/hooks';
-import { selectUsers } from '../features/users/usersSlice';
-import { selectQuestions } from '../features/questions/questionsSlice';
-import { numberUtil } from '../app/utils/number.util';
-import { ROUTE } from '../app/constants/route';
+import { Layout } from '../components/Layout';
+import { useAppSelector } from '../redux/hooks';
+import { selectUsers } from '../redux/slices/usersSlice';
+import { selectQuestions } from '../redux/slices/questionsSlice';
+import { numberUtil } from '../utils/NumberUtil';
+import { Routes } from '../constants/routes';
 
-export const PollResultRoute = () => {
+export const PollResultPage = () => {
 
     const params = useParams();
     const users = useAppSelector(selectUsers);
@@ -17,7 +17,7 @@ export const PollResultRoute = () => {
 
     return (
 
-        <LayoutContainer>
+        <Layout>
             {
                 question ?
                     <div className={'rounded p-4'}>
@@ -42,8 +42,8 @@ export const PollResultRoute = () => {
                             </div>
                         </div>
                     </div>
-                    : <Navigate to={ROUTE.PAGE_NOT_FOUND} replace={true} />
+                    : <Navigate to={Routes.PAGE_NOT_FOUND} replace={true} />
             }
-        </LayoutContainer>
+        </Layout>
     );
 };

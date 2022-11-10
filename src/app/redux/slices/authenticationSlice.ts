@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { LOCAL_STORAGE_KEY } from '../../app/constants/keys';
+import { RootState } from '../store';
+import { LOCAL_STORAGE_KEY } from '../../constants/keys';
 
 export interface AuthenticationState {
     id: string;

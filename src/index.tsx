@@ -1,43 +1,43 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from './app/redux/store';
 import './index.css';
 
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import { LoginRoute } from './routes/LoginRoute';
-import { Root } from './routes/Root';
+import { LoginPage } from './app/pages/LoginPage';
+import { HomePage } from './app/pages/HomePage';
 import { createRoot } from 'react-dom/client';
-import { ErrorRoute } from './routes/ErrorRoute';
-import { NewPollRoute } from './routes/NewPollRoute';
-import { LeaderBoardRoute } from './routes/LeaderBoardRoute';
-import { PollResultRoute } from './routes/PollResultRoute';
-import { ROUTE } from './app/constants/route';
+import { ErrorPage } from './app/pages/ErrorPage';
+import { NewPollPage } from './app/pages/NewPollPage';
+import { LeaderBoardPage } from './app/pages/LeaderBoardPage';
+import { PollResultPage } from './app/pages/PollResultPage';
+import { Routes } from './app/constants/routes';
 
 const router = createBrowserRouter([
     {
-        path: ROUTE.HOME,
-        element: <Root/>,
-        errorElement: <ErrorRoute />
+        path: Routes.HOME,
+        element: <HomePage/>,
+        errorElement: <ErrorPage />
     },
     {
-        path: ROUTE.NEW_POLL,
-        element: <NewPollRoute/>
+        path: Routes.NEW_POLL,
+        element: <NewPollPage/>
     },
     {
-        path: ROUTE.LEADER_BOARD,
-        element: <LeaderBoardRoute/>
+        path: Routes.LEADER_BOARD,
+        element: <LeaderBoardPage/>
     },
     {
-        path: ROUTE.LOGIN,
-        element: <LoginRoute/>
+        path: Routes.LOGIN,
+        element: <LoginPage/>
     },
     {
-        path: ROUTE.POLL_RESULT,
-        element: <PollResultRoute />,
+        path: Routes.POLL_RESULT,
+        element: <PollResultPage />,
     },
     {
-        path: ROUTE.PAGE_NOT_FOUND,
-        element: <ErrorRoute />
+        path: Routes.PAGE_NOT_FOUND,
+        element: <ErrorPage />
     }
 ]);
 

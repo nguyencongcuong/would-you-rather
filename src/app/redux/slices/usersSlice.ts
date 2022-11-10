@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { UserI, UsersI } from '../../app/models/user.model';
-import { users } from '../../app/__mock/users.mock';
+import { RootState } from '../store';
+import { UserI, UsersI } from '../../models/UserModel';
+import { users } from '../../__mock/users.mock';
 
 export type UsersState = UsersI
 

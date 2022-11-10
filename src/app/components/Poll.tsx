@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { UserI } from '../models/user.model';
-import { QuestionI } from '../models/question.model';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { selectAuthentication } from '../../features/authentication/authenticationSlice';
-import { selectUsers, updateUser } from '../../features/users/usersSlice';
+import { UserI } from '../models/UserModel';
+import { QuestionI } from '../models/QuestionModel';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { selectAuthentication } from '../redux/slices/authenticationSlice';
+import { selectUsers, updateUser } from '../redux/slices/usersSlice';
 import { cloneDeep } from 'lodash';
-import { updateQuestion } from '../../features/questions/questionsSlice';
+import { updateQuestion } from '../redux/slices/questionsSlice';
 import { useNavigate } from 'react-router-dom';
 
 interface PoolProps {

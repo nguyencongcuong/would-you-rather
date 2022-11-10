@@ -1,18 +1,14 @@
 import React from 'react';
-import { Poll } from '../components/Poll';
-import { useAppSelector } from '../hooks';
-import { selectQuestions } from '../../features/questions/questionsSlice';
-import { selectUsers } from '../../features/users/usersSlice';
-import { selectAuthentication } from '../../features/authentication/authenticationSlice';
+import { Poll } from './Poll';
+import { useAppSelector } from '../redux/hooks';
+import { selectQuestions } from '../redux/slices/questionsSlice';
+import { selectUsers } from '../redux/slices/usersSlice';
+import { selectAuthentication } from '../redux/slices/authenticationSlice';
 
-export const AnsweredQuestionsContainer = () => {
+export const AnsweredPolls = () => {
     const questions = useAppSelector(selectQuestions);
     const users = useAppSelector(selectUsers);
     const authentication = useAppSelector(selectAuthentication);
-
-    if (authentication.id) {
-        const currentUser = users[authentication.id];
-    }
 
     return (
         <div className={'flex flex-col gap-4'}>

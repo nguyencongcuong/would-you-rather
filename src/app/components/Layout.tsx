@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { NavigationContainer } from './NavigationContainer';
+import { Navigation } from './Navigation';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../hooks';
-import { login } from '../../features/authentication/authenticationSlice';
-import { ROUTE } from '../constants/route';
+import { useAppDispatch } from '../redux/hooks';
+import { login } from '../redux/slices/authenticationSlice';
+import { Routes } from '../constants/routes';
 import { Col, Row } from 'antd';
 import { LOCAL_STORAGE_KEY } from '../constants/keys';
 
@@ -11,20 +11,20 @@ interface LayoutProps {
     children: React.ReactNode;
 }
 
-export const LayoutContainer: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+export const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         const id = localStorage.getItem(LOCAL_STORAGE_KEY.ID);
-        id ? dispatch(login({id})) : navigate(ROUTE.LOGIN)
+        id ? dispatch(login({id})) : navigate(Routes.LOGIN)
     }, []);
 
     return (
         <Row>
             <Col xs={24}>
-                <NavigationContainer/>
+                <Navigation/>
             </Col>
 
             <Col span={12} offset={6}>

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { LayoutContainer } from '../app/containers/LayoutContainer';
+import { Layout } from '../components/Layout';
 import { v4 as uuidv4 } from 'uuid';
 import { Card, Input } from 'antd';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { selectUsers, updateUser } from '../features/users/usersSlice';
-import { addQuestion } from '../features/questions/questionsSlice';
-import { selectAuthentication } from '../features/authentication/authenticationSlice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { selectUsers, updateUser } from '../redux/slices/usersSlice';
+import { addQuestion } from '../redux/slices/questionsSlice';
+import { selectAuthentication } from '../redux/slices/authenticationSlice';
 import { cloneDeep } from 'lodash';
-import { UserI } from '../app/models/user.model';
-import { QuestionI } from '../app/models/question.model';
+import { UserI } from '../models/UserModel';
+import { QuestionI } from '../models/QuestionModel';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE } from '../app/constants/route';
+import { Routes } from '../constants/routes';
 
-export const NewPollRoute = () => {
+export const NewPollPage = () => {
     const users = useAppSelector(selectUsers);
     const authentication = useAppSelector(selectAuthentication);
 
@@ -53,12 +53,12 @@ export const NewPollRoute = () => {
             dispatch(updateUser({ user: updatedUser }));
             dispatch(addQuestion({ id: questionId, question: newQuestion }));
 
-            navigate(ROUTE.HOME);
+            navigate(Routes.HOME);
         }
     };
 
     return (
-        <LayoutContainer>
+        <Layout>
 
             <Card title={'Create New Question'}>
                 <h3 className={'mb-4'}>Would you rather:</h3>
@@ -80,6 +80,6 @@ export const NewPollRoute = () => {
 
             <form>
             </form>
-        </LayoutContainer>
+        </Layout>
     );
 };

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { QuestionI, QuestionsI } from '../../app/models/question.model';
-import { questions } from '../../app/__mock/questions.mock';
+import { RootState } from '../store';
+import { QuestionI, QuestionsI } from '../../models/QuestionModel';
+import { questions } from '../../__mock/questions.mock';
 
 export type QuestionState = QuestionsI
 

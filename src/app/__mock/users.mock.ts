@@ -1,4 +1,4 @@
-import { UserI } from '../models/user.model';
+import { UserI } from '../models/UserModel';
 
 export const users: Record<string, UserI> = {
     sarahedo: {

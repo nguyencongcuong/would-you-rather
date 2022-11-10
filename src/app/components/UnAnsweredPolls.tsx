@@ -1,11 +1,11 @@
 import React from 'react';
-import { useAppSelector } from '../hooks';
-import { Poll } from '../components/Poll';
-import { selectQuestions } from '../../features/questions/questionsSlice';
-import { selectUsers } from '../../features/users/usersSlice';
-import { selectAuthentication } from '../../features/authentication/authenticationSlice';
+import { useAppSelector } from '../redux/hooks';
+import { Poll } from './Poll';
+import { selectQuestions } from '../redux/slices/questionsSlice';
+import { selectUsers } from '../redux/slices/usersSlice';
+import { selectAuthentication } from '../redux/slices/authenticationSlice';
 
-export const UnAnsweredQuestionsContainer = () => {
+export const UnAnsweredPolls = () => {
 
     const questions = useAppSelector(selectQuestions);
     const users = useAppSelector(selectUsers);

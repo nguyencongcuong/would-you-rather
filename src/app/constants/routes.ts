@@ -1,4 +1,4 @@
-export const ROUTE = {
+export const Routes = {
     HOME: '/',
     NEW_POLL: '/add',
     LEADER_BOARD: '/leaderboard',

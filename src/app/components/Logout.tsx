@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { logout } from './authenticationSlice';
+import { useAppDispatch } from '../redux/hooks';
+import { logout } from '../redux/slices/authenticationSlice';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE } from '../../app/constants/route';
+import { Routes } from '../constants/routes';
 
 export const Logout: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -10,7 +10,7 @@ export const Logout: React.FC = () => {
 
     const handleClick = () => {
         dispatch(logout());
-        navigate(ROUTE.LOGIN);
+        navigate(Routes.LOGIN);
     };
 
     return (

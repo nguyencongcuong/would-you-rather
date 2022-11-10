@@ -1,9 +1,9 @@
 import React from 'react';
-import { LayoutContainer } from '../app/containers/LayoutContainer';
-import { useAppSelector } from '../app/hooks';
-import { selectUsers } from '../features/users/usersSlice';
+import { Layout } from '../components/Layout';
+import { useAppSelector } from '../redux/hooks';
+import { selectUsers } from '../redux/slices/usersSlice';
 import { transform } from 'lodash';
-import { UserI } from '../app/models/user.model';
+import { UserI } from '../models/UserModel';
 import { Col, Row } from 'antd';
 
 interface LeaderBoardItemI {
@@ -14,7 +14,7 @@ interface LeaderBoardItemI {
     avatarURL: string
 }
 
-export const LeaderBoardRoute = () => {
+export const LeaderBoardPage = () => {
     const users = useAppSelector(selectUsers);
 
     const transformedUsers: LeaderBoardItemI[] = transform(users, (result: LeaderBoardItemI[], value: UserI) => {
@@ -32,7 +32,7 @@ export const LeaderBoardRoute = () => {
     const sortedTransformedUser = transformedUsers.sort((a, b) => b.score - a.score);
 
     return (
-        <LayoutContainer>
+        <Layout>
             {
                 sortedTransformedUser.length
                     ?
@@ -80,6 +80,6 @@ export const LeaderBoardRoute = () => {
                     :
                     null
             }
-        </LayoutContainer>
+        </Layout>
     );
 };

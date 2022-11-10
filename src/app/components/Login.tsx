@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Select } from 'antd';
-import { SelectOption } from '../../routes/LoginRoute';
-import { UserI } from '../../app/models/user.model';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { login } from './authenticationSlice';
-import { getUsers, selectUsers } from '../users/usersSlice';
+import { SelectOption } from '../pages/LoginPage';
+import { UserI } from '../models/UserModel';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { login } from '../redux/slices/authenticationSlice';
+import { getUsers, selectUsers } from '../redux/slices/usersSlice';
 import { transform } from 'lodash';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE } from '../../app/constants/route';
+import { Routes } from '../constants/routes';
 
 export const Login: React.FC = () => {
     const [selectedUser, setSelectedUser] = useState<SelectOption>({ value: '', label: '' });
@@ -27,7 +27,7 @@ export const Login: React.FC = () => {
     const handleLogin = () => {
         const id = selectedUser.value;
         dispatch(login({ id }));
-        navigate(ROUTE.HOME);
+        navigate(Routes.HOME);
     };
 
     useEffect(() => {
