@@ -1,10 +1,10 @@
 import React from 'react';
-import { Layout } from '../components/Layout';
 import { useAppSelector } from '../redux/hooks';
 import { selectUsers } from '../redux/slices/usersSlice';
 import { transform } from 'lodash';
 import { UserI } from '../models/UserModel';
 import { Col, Row } from 'antd';
+import { Layout } from '../components/Layout';
 
 interface LeaderBoardItemI {
     answeredQuestions: number,

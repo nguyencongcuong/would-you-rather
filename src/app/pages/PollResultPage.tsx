@@ -9,8 +9,8 @@ import { numberUtil } from '../utils/NumberUtil';
 import { Routes } from '../constants/routes';
 
 export const PollResultPage = () => {
-
     const params = useParams();
+
     const users = useAppSelector(selectUsers);
     const questions = useAppSelector(selectQuestions);
     const question = params.question_id ? questions[params.question_id] : undefined;

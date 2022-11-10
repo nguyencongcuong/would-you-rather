@@ -2,12 +2,14 @@ import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import authenticationReducer from './slices/authenticationSlice';
 import userListReducer from './slices/usersSlice';
 import questionsReducer from './slices/questionsSlice';
+import routeReducer from './slices/routeSlice';
 
 export const store = configureStore({
     reducer: {
         authentication: authenticationReducer,
         users: userListReducer,
-        questions: questionsReducer
+        questions: questionsReducer,
+        route: routeReducer,
     },
 });
 

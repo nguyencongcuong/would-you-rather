@@ -8,6 +8,7 @@ import { getUsers, selectUsers } from '../redux/slices/usersSlice';
 import { transform } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from '../constants/routes';
+import { selectRoutes } from '../redux/slices/routeSlice';
 
 export const Login: React.FC = () => {
     const [selectedUser, setSelectedUser] = useState<SelectOption>({ value: '', label: '' });
@@ -15,7 +16,9 @@ export const Login: React.FC = () => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+
     const users = useAppSelector(selectUsers);
+    const routeHistory = useAppSelector(selectRoutes);
 
     const handleChange = (userId: string) => {
         const user = selectOptions.find(item => item.value === userId);
@@ -27,7 +30,8 @@ export const Login: React.FC = () => {
     const handleLogin = () => {
         const id = selectedUser.value;
         dispatch(login({ id }));
-        navigate(Routes.HOME);
+        const previousRoute = routeHistory.path[1];
+        previousRoute ? navigate(previousRoute) : navigate(Routes.HOME);
     };
 
     useEffect(() => {
@@ -42,8 +46,6 @@ export const Login: React.FC = () => {
             };
             return acc.push(option);
         }, []);
-
-        setSelectedUser(options[0]);
         setSelectOptions(options);
     }, [users]);
 
