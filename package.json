@@ -1,6 +1,7 @@
 {
-  "name": "would-you-rather-2",
+  "name": "would-you-rather",
   "version": "0.1.0",
+	"author": "Nguyen Cong Cuong",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
